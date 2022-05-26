@@ -1,4 +1,5 @@
 import Costs from './components/Costs/Costs';
+import NewCost from './components/NewCost/NewCost';
 
 const App = () => {
   const costs = [
@@ -14,7 +15,8 @@ const App = () => {
     }
   ];
   return (
-    <div> 
+    <div>
+      <NewCost />
       <Costs costs={costs}/>
     </div>
   );
