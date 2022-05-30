@@ -1,7 +1,7 @@
 ﻿import { useState } from 'react';
 import './CostForm.css';
 
-const CostForm = () => {
+const CostForm = (props) => {
   const [userInput, setUserInput] = useState({
     name: '',
     amount: '',
@@ -19,11 +19,17 @@ const CostForm = () => {
 
   const submitHandler = (event) => {
     event.preventDefault();
+    const costData = {
+      name: userInput.name,
+      amount: userInput.amount,
+      date: new Date(userInput.date)
+    };
+    props.onSaveCostData(costData);
     setUserInput({
       name: '', 
       amount: '',
       date: ''
-    })
+    });
   };
 
   return (
