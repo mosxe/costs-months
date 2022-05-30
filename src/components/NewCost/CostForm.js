@@ -3,7 +3,7 @@ import './CostForm.css';
 
 const CostForm = (props) => {
   const [userInput, setUserInput] = useState({
-    name: '',
+    description: '',
     amount: '',
     date: ''
   });
@@ -20,13 +20,13 @@ const CostForm = (props) => {
   const submitHandler = (event) => {
     event.preventDefault();
     const costData = {
-      name: userInput.name,
+      description: userInput.description,
       amount: userInput.amount,
       date: new Date(userInput.date)
     };
     props.onSaveCostData(costData);
     setUserInput({
-      name: '', 
+      description: '', 
       amount: '',
       date: ''
     });
@@ -37,7 +37,7 @@ const CostForm = (props) => {
       <div className="new-cost__controls">
         <div className="new-cost__control">
           <label>Название</label>
-          <input type="text" name="name" value={userInput.name} onChange={inputChangeHandler} />
+          <input type="text" name="description" value={userInput.description} onChange={inputChangeHandler} />
         </div>
         <div className="new-cost__control">
           <label>Сумма</label>
