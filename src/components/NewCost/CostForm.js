@@ -1,20 +1,47 @@
-﻿import './CostForm.css';
+﻿import { useState } from 'react';
+import './CostForm.css';
 
 const CostForm = () => {
+  const [userInput, setUserInput] = useState({
+    name: '',
+    amount: '',
+    date: ''
+  });
+
+  const inputChangeHandler = (e) => {
+    setUserInput((prev) => {
+      return {
+        ...prev,
+        [e.target.name]: e.target.value
+      }
+    });
+  };
+
+  const submitHandler = (event) => {
+    event.preventDefault();
+    setUserInput({
+      name: '', 
+      amount: '',
+      date: ''
+    })
+  };
+
   return (
-    <form>
+    <form onSubmit={submitHandler}>
       <div className="new-cost__controls">
         <div className="new-cost__control">
           <label>Название</label>
-          <input type="text"/>
+          <input type="text" name="name" value={userInput.name} onChange={inputChangeHandler} />
         </div>
         <div className="new-cost__control">
           <label>Сумма</label>
-          <input type="number" min='0.01' step="0.1"/>
+          <input type="number" name="amount" value={userInput.amount} 
+            min='0' onChange={inputChangeHandler}/>
         </div>
         <div className="new-cost__control">
           <label>Дата</label>
-          <input type="date" min="2019-01-01" step="2022-12-31"/>
+          <input type="date" name="date" value={userInput.date}
+            min="2019-01-01" step="2022-12-31" onChange={inputChangeHandler}/>
         </div>
         <div className="new-cost__actions">
           <button type="submit">Добавить расход</button>
