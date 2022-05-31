@@ -51,6 +51,7 @@ const CostForm = (props) => {
         </div>
         <div className="new-cost__actions">
           <button type="submit">Добавить расход</button>
+          <button onClick={props.visibleFormHandler}>Отмена</button>
         </div>
       </div>
     </form>
